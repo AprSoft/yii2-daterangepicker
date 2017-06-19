@@ -1,0 +1,21 @@
+{
+    "name": "aprsoft/yii2-daterangepicker",
+    "description": "yii2,extension,daterangepicker",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","daterangepicker"],
+    "license": "BSD-4-Clause",
+    "authors": [
+        {
+            "name": "zhangxinyu",
+            "email": "176956856@qq.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "AprSoft\\DateRangePicker\\": ""
+        }
+    }
+}
