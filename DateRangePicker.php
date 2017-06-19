@@ -9,7 +9,7 @@ use yii\helpers\Json;
 use yii\web\View;
 use yii\widgets\InputWidget;
 
-class DateRange extends InputWidget
+class DateRangePicker extends InputWidget
 {
 
     //配置选项
@@ -49,6 +49,8 @@ class DateRange extends InputWidget
             "startDate" => date('Y/m', time()) . "/01",
             "endDate" => date('Y/m', time()) . "/" . date('t', time()),
             "ranges" => $this->getRanges(),
+            "opens" => "left",
+            "autoUpdateInput" => false,
 
         ];
         $this->clientOptions = ArrayHelper::merge($this->_options, $this->clientOptions);
@@ -67,7 +69,7 @@ class DateRange extends InputWidget
 
     protected function registerAssets()
     {
-        DateRangeAsset::register($this->view);
+        DateRangePickerAsset::register($this->view);
         $clientOptions = Json::encode($this->clientOptions);
         $script = "$('#" . $this->options['id'] . "').daterangepicker(" . $clientOptions . ");";
         $script .= "$('#" . $this->options['id'] . "').on('apply.daterangepicker', function(ev, picker) { $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD')); });";
