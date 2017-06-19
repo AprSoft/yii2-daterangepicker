@@ -4,7 +4,7 @@ namespace AprSoft\DateRangePicker;
 
 use yii\web\AssetBundle;
 
-class DateRangeAsset extends AssetBundle
+class DateRangePickerAsset extends AssetBundle
 {
 
     public $css = [
