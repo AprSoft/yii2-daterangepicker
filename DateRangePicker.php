@@ -43,7 +43,8 @@ class DateRangePicker extends InputWidget
     {
 
         $this->options['id'] = $this->hasModel() ? Html::getInputId($this->model, $this->attribute) : $this->id;
-        $this->options['class'] = 'form-control';
+
+        $this->options['class'] = isset($this->options['class']) ? $this->options['class'] : 'form-control';
         $this->_options = [
             "alwaysShowCalendars" => true,
             "startDate" => date('Y/m', time()) . "/01",
