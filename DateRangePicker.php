@@ -74,7 +74,7 @@ class DateRangePicker extends InputWidget
         $clientOptions = Json::encode($this->clientOptions);
         $script = "$('#" . $this->options['id'] . "').daterangepicker(" . $clientOptions . ");";
         if (isset($this->clientOptions['timePicker']) && $this->clientOptions['timePicker']) {
-           $script .= "$('#" . $this->options['id'] . "').on('apply.daterangepicker', function(ev, picker) { $(this).val(picker.startDate.format('YYYY/MM/DD HH:mm:ss') + ' - ' + picker.endDate.format('YYYY/MM/DD  HH:mm:ss')); });";
+           $script .= "$('#" . $this->options['id'] . "').on('apply.daterangepicker', function(ev, picker) { $(this).val(picker.startDate.format('YYYY/MM/DD HH:mm:ss') + ' - ' + picker.endDate.format('YYYY/MM/DD HH:mm:ss')); });";
         } else {
             $script .= "$('#" . $this->options['id'] . "').on('apply.daterangepicker', function(ev, picker) { $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD')); });";
         }
