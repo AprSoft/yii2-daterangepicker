@@ -73,7 +73,12 @@ class DateRangePicker extends InputWidget
         DateRangePickerAsset::register($this->view);
         $clientOptions = Json::encode($this->clientOptions);
         $script = "$('#" . $this->options['id'] . "').daterangepicker(" . $clientOptions . ");";
-        $script .= "$('#" . $this->options['id'] . "').on('apply.daterangepicker', function(ev, picker) { $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD')); });";
+        if (isset($this->clientOptions['timePicker']) && $this->clientOptions['timePicker']) {
+           $script .= "$('#" . $this->options['id'] . "').on('apply.daterangepicker', function(ev, picker) { $(this).val(picker.startDate.format('YYYY/MM/DD HH:mm:ss') + ' - ' + picker.endDate.format('YYYY/MM/DD  HH:mm:ss')); });";
+        } else {
+            $script .= "$('#" . $this->options['id'] . "').on('apply.daterangepicker', function(ev, picker) { $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD')); });";
+        }
+        
         $script .= "$('#" . $this->options['id'] . "').on('cancel.daterangepicker', function(ev, picker) { $(this).val(''); });";
         $this->view->registerJs($script, View::POS_READY);
     }
